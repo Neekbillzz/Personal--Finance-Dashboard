@@ -83,8 +83,8 @@ function DashboardPage({ searchTerm }) {
 
   return (
     <div>
-      <p className="m-5 font-bold -mr-8">Dashboard</p>
-      <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-3 gap-6">
+      <p className="m-6 font-bold uppercase">Dashboard</p>
+      <div className="grid grid-cols-1 md:grid-cols-3 w-full mb-8 gap-6">
         <StatCard
           title={"Current Balance"}
           amount={currentBalance}
@@ -110,7 +110,7 @@ function DashboardPage({ searchTerm }) {
           See All
         </button>
       </div>
-      <div className="flex items-center justify-between bg-slate-200 p-4 mx-5 w-[100]px">
+      <div className="flex items-center justify-between bg-slate-200 px-3 py-2 text-xs font-medium text-gray-500 uppercase ml-5 gap-3 sm:bg-slate-200">
         <p>Title</p>
         <p className="w-[50px]">Category</p>
         <p className="w-[50px]">Type</p>

@@ -16,8 +16,8 @@ function TransactionItem({
   const isSuccessful = status && status.toLowerCase() === "successful";
 
   return (
-    <div className="m-5">
-      <div className="flex items-center justify-between p-1 border-b hover:bg-slate-100 transition-colors">
+    <div className="m-5 w-full bg-white rounded-lg shadow-sm">
+      <div className="flex items-center justify-between bg-slate-200 px-3 py-2 text-xs font-medium text-gray-500 uppercase sm:text-xs gap-1">
         <p className="w-[150px] font-medium">{title}</p>
         <p className="w-[100px] text-slate-500">{category}</p>
 

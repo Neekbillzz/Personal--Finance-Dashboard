@@ -23,7 +23,7 @@ function Sidebar() {
   ];
 
   return (
-    <aside className="w-64 bg-slate-900 text-slate-300 min-h-screen p-4 flex flex-col justify-between">
+    <aside className="w-64 bg-slate-900 text-slate-300 min-h-screen p-4 flex flex-col justify-between hidden md:flex">
       <div>
         {/* Logo / Brand Name */}
         <div className="flex items-center gap-2 px-3 py-4 mb-6">

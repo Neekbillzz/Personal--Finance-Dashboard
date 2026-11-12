@@ -2,7 +2,7 @@ import { BellDot, UserRound, SearchCheck } from "lucide-react";
 
 function Navbar({ searchTerm, setSearchTerm }) {
   return (
-    <div className="border-y-1 flex flex-row justify-around gap-5 p-4 bg-white-shadow items-center w-full h-20 flex-1">
+    <div className="border-y-1 flex flex-row justify-around gap-5 p-4 bg-white-shadow items-center w-full h-20 flex-1 border-r">
       <p className="text-black font-bold text-xl mr-25">
         Welcome, Abili Nicholas!
       </p>
