@@ -2,6 +2,10 @@
 
 A responsive, full-stack fintech dashboard web application built to track user transactions, manage income and expenses, and compute real-time financial metrics dynamically.
 
+## 📸 Preview
+
+![Fintech Dashboard Preview](./client/src/assets/dashboard.png)
+
 ## 🚀 Features
 
 - Dynamic Financial Calculations: Automatically computes Total Income, Total Spent, and Net Current Balance on the fly from transaction data.
