@@ -12,7 +12,8 @@ function DashboardPage({ searchTerm }) {
   const [showModal, setShowModal] = useState(false);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/transactions")
+    const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+    fetch(`${API_URL}/api/transactions`)
       .then((res) => res.json())
       .then((data) => {
         setUserProfile(data.userProfile);
@@ -28,8 +29,6 @@ function DashboardPage({ searchTerm }) {
         Loading dashboard...
       </div>
     );
-
-    
   }
 
   // Safely check that item exists before reading item.type
@@ -57,26 +56,31 @@ function DashboardPage({ searchTerm }) {
       0,
     );
 
-    // 3. Calculate Current Balance (Base starting balance + Income - Spent)
-const baseStartingBalance = 0; 
-const currentBalance = baseStartingBalance + totalIncome - totalSpent;
+  // 3. Calculate Current Balance (Base starting balance + Income - Spent)
+  const baseStartingBalance = 0;
+  const currentBalance = baseStartingBalance + totalIncome - totalSpent;
 
   console.log(transactions);
 
   const handleDelete = async (id) => {
-  try {
-    const response = await fetch(`http://localhost:5000/api/transactions/${id}`, {
-      method: "DELETE",
-    });
-    
-    if (response.ok) {
-      // Filter out the deleted transaction from state
-      setTransactions(transactions.filter((item) => (item.id || item._id) !== id));
+    try {
+      const response = await fetch(
+        `http://localhost:5000/api/transactions/${id}`,
+        {
+          method: "DELETE",
+        },
+      );
+
+      if (response.ok) {
+        // Filter out the deleted transaction from state
+        setTransactions(
+          transactions.filter((item) => (item.id || item._id) !== id),
+        );
+      }
+    } catch (err) {
+      console.error("Error deleting transaction:", err);
     }
-  } catch (err) {
-    console.error("Error deleting transaction:", err);
-  }
-};
+  };
 
   return (
     <div>
@@ -116,36 +120,36 @@ const currentBalance = baseStartingBalance + totalIncome - totalSpent;
         <p className="w-[50px]">Date</p>
       </div>
       {transactions.length === 0 ? (
-  <div className="py-8 text-center text-slate-400 font-medium">
-    No transactions available. Click "+ Add Transaction" to create one!
-  </div>
-) : (
-  transactions
-    .filter((item) => item && item.title)
-    .filter((item) => {
-      const currentSearch = searchTerm || "";
-      if (!currentSearch) return true;
-      const query = currentSearch.toLowerCase();
-      return (
-        item.title.toLowerCase().includes(query) ||
-        (item.category && item.category.toLowerCase().includes(query)) ||
-        (item.type && item.type.toLowerCase().includes(query))
-      );
-    })
-    .map((item, index) => (
-      <TransactionItem
-        key={item.id ||item._id ||index}
-        id={item.id || item._id}
-        title={item.title}
-        category={item.category}
-        type={item.type || "debit"}
-        amount={item.amount}
-        status={item.status || "successful"}
-        date={item.date || "Today"}
-        onDelete={handleDelete}
-      />
-    ))
-)}
+        <div className="py-8 text-center text-slate-400 font-medium">
+          No transactions available. Click "+ Add Transaction" to create one!
+        </div>
+      ) : (
+        transactions
+          .filter((item) => item && item.title)
+          .filter((item) => {
+            const currentSearch = searchTerm || "";
+            if (!currentSearch) return true;
+            const query = currentSearch.toLowerCase();
+            return (
+              item.title.toLowerCase().includes(query) ||
+              (item.category && item.category.toLowerCase().includes(query)) ||
+              (item.type && item.type.toLowerCase().includes(query))
+            );
+          })
+          .map((item, index) => (
+            <TransactionItem
+              key={item.id || item._id || index}
+              id={item.id || item._id}
+              title={item.title}
+              category={item.category}
+              type={item.type || "debit"}
+              amount={item.amount}
+              status={item.status || "successful"}
+              date={item.date || "Today"}
+              onDelete={handleDelete}
+            />
+          ))
+      )}
 
       {showModal && (
         <AddTransactionModal

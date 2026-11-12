@@ -19,31 +19,32 @@ function AddTransactionModal({ setShowModal, setTransactions }) {
     }
 
     try {
-      const response = await fetch("http://localhost:5000/api/transactions", {
+      const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+      const response = await fetch(`${API_URL}/api/transactions`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
-  title: title.trim(),
-  category,
-  type,
-  amount: Number(String(amount).replace(/[^\d.]/g, "")),
-  status,
-}),
+          title: title.trim(),
+          category,
+          type,
+          amount: Number(String(amount).replace(/[^\d.]/g, "")),
+          status,
+        }),
       });
 
       const data = await response.json();
 
       if (response.ok) {
-  if (data.transaction) {
-    setTransactions((prev) => [
-      data.transaction, 
-      ...(Array.isArray(prev) ? prev.filter(Boolean) : [])
-    ]);
-  }
-  setShowModal(false);
-} else {
+        if (data.transaction) {
+          setTransactions((prev) => [
+            data.transaction,
+            ...(Array.isArray(prev) ? prev.filter(Boolean) : []),
+          ]);
+        }
+        setShowModal(false);
+      } else {
         console.error("Server error:", data.error);
       }
     } catch (error) {
