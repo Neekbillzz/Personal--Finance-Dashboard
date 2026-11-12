@@ -25,6 +25,16 @@ A responsive, full-stack fintech dashboard web application built to track user t
 
    git clone https://github.com/Neekbillzz/Personal--Finance-Dashboard
 
-2. Clone the repository:
 
-   npm install
+   
+# Terminal 1 - Start the backend
+       cd server
+       npm install
+       npm run dev
+
+# Terminal 2 - Start the frontend
+      cd client
+      npm install
+      npm run dev
+
+# Create a .env file in server  
