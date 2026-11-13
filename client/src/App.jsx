@@ -7,7 +7,7 @@ import TransactionItem from "./components/TransactionItem";
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   return (
-    <div className="flex min-h-screen w-full overflow-x-hidden bg-gray-50">
+    <div className="flex min-h-screen w-full overflow-x-clip bg-gray-50">
       <Sidebar />
 
       <div className="flex flex-col flex-1 min-w-0 w-full">
