@@ -3,17 +3,22 @@
 
 A responsive, full-stack fintech web application designed to track personal cash flow, manage account balances, and monitor real-time credits and debits through a clean, mobile-first interface.
 
-🔗 Live Demo: https://payeflow-tracker.vercel.app
 
 🔗 Backend API: https://personal-finance-dashboard-s6ua.onrender.com/api/transactions
 
+
 ---
 
+
 ## 📸 Preview
+
+[![Live Demo](https://img.shields.io/badge/demo-live-brightgreen)](https://payeflow-tracker.vercel.app)
 
 > * ![Dashboard Overview](./client/src/assets/dashboard.png)*
 
 ---
+
+
 
 ## ✨ Key Features
 
