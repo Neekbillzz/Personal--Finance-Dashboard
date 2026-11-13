@@ -7,19 +7,17 @@ import TransactionItem from "./components/TransactionItem";
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
   return (
-   <div className="flex-1 w-full max-w-full overflow-x-hidden p-6">
-     <div className="flex min-h-screen w-full">
+    <div className="flex min-h-screen w-full overflow-x-hidden bg-gray-50">
       <Sidebar />
 
-      <div className="grid grid-cols-1 ">
+      <div className="flex flex-col flex-1 min-w-0 w-full">
         <Navbar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        <div className="w-full max-w-7xl mx-auto">
+        <main className="w-full max-w-7xl mx-auto">
           <DashboardPage searchTerm={searchTerm} />
           <TransactionItem />
-        </div>
+        </main>
       </div>
     </div>
-   </div>
   );
 }
 

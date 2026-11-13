@@ -82,8 +82,10 @@ function DashboardPage({ searchTerm }) {
   };
 
   return (
-    <div>
-      <p className="m-6 font-bold uppercase">Dashboard</p>
+    <div className="w-full p-4 md:p-6">
+      <p className="mb-4 text-sm font-bold tracking-wider text-gray-700 uppercase">
+        Dashboard
+      </p>
       <div className="grid grid-cols-1 md:grid-cols-3 w-full mb-8 gap-6">
         <StatCard
           title={"Current Balance"}
